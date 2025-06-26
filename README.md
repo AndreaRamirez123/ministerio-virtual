@@ -1,27 +1,36 @@
-# MinisterioVirtual
+# 🙌 Ministerio Virtual
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.10.
+Un proyecto web completo que busca compartir el mensaje de fe, esperanza y salvación a través de devocionales, testimonios y contenido multimedia cristiano.
 
-## Development server
+Este sitio está desarrollado con tecnologías modernas como Angular y Node.js, y ofrece una experiencia atractiva, responsiva y espiritualmente edificante.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+---
 
-## Code scaffolding
+## 🌐 Características principales
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- ✝️ Página de inicio con versículo del día y slider visual
+- 📖 Publicación y lectura de devocionales
+- 💬 Testimonios de vida que inspiran
+- 🛠️ Panel de administración (publicar, editar, eliminar)
+- 🌈 Estilo visual atractivo con enfoque espiritual
+- 🔐 Backend en Node.js con rutas REST para devocionales y testimonios
 
-## Build
+---
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## 🛠️ Tecnologías utilizadas
 
-## Running unit tests
+| Frontend    | Backend     | Base de datos | Otros         |
+|-------------|-------------|----------------|----------------|
+| Angular     | Node.js     | (Ej: MongoDB o MySQL) | Express.js |
+| TypeScript  | Express     | Sequelize (si aplica) | HTML + SCSS |
+| RxJS        | dotenv      | -              | Git + GitHub  |
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+---
 
-## Running end-to-end tests
+## 🚀 Instalación y ejecución
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### 🔧 Clona el repositorio
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```bash
+git clone https://github.com/TU_USUARIO_REAL/ministerio-virtual.git
+cd ministerio-virtual
