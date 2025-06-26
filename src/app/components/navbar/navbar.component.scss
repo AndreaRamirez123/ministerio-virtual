@@ -1,0 +1,48 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to right, #bbbbbb, #b7bfd6);
+  padding: 1rem 2rem;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo {
+  height: 100px;
+  width: auto;
+}
+
+.nombre-ministerio {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #4d052f;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #1a1a1a;
+  font-weight: bold;
+}
+
+.menu a:hover {
+  color: #850574;
+}
+

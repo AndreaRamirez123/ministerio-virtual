@@ -1,0 +1,41 @@
+<section class="testimonios-section">
+  <h2 class="titulo-seccion">Testimonios de fe</h2>
+
+  <div class="formulario-con-fondo">
+    <form (ngSubmit)="guardarTestimonio()" #formTestimonio="ngForm" class="formulario-testimonio">
+      <h3>Envía tu testimonio</h3>
+
+      <div class="campo">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" [(ngModel)]="testimonio.nombre_persona" required />
+      </div>
+
+      <div class="campo">
+        <label for="email">Correo</label>
+        <input type="email" id="email" name="email" [(ngModel)]="testimonio.email" />
+      </div>
+
+      <div class="campo">
+        <label for="testimonio">Testimonio</label>
+        <textarea id="testimonio" name="testimonio" [(ngModel)]="testimonio.testimonio" rows="4" required></textarea>
+      </div>
+
+      <button type="submit">Enviar testimonio</button>
+    </form>
+  </div>
+
+<div class="tarjetas-testimonios">
+  <div *ngFor="let t of testimoniosMostrados" class="card" [ngClass]="t.color">
+    <h4>{{ t.nombre_persona }}</h4>
+    <small>{{ t.fecha_envio | date:'shortDate' }}</small>
+    <p>{{ t.testimonio }}</p>
+  </div>
+</div>
+
+<div *ngIf="testimoniosMostrados.length < testimonios.length" style="text-align:center; margin-top: 2rem;">
+  <button (click)="verMas()" class="ver-mas-btn">Ver más testimonios</button>
+</div>
+
+
+
+

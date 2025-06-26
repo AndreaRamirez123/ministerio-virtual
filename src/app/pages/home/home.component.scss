@@ -1,0 +1,112 @@
+.hero-section {
+ background: linear-gradient(to bottom, #eeeeee, #cccccc);
+  background-size: cover;
+  background-position: center;
+  max-height: 80vh;
+  padding: 40px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: #222;
+  overflow: hidden;
+}
+
+.hero-section app-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+
+.mySwiper {
+  width: 100%;
+  height: 100%;
+}
+
+.mySwiper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.5);
+}
+
+
+.overlay {
+  position: relative;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  text-align: center;
+  border-radius: 20px;
+  color: #fff;
+}
+
+
+.welcome-text {
+  font-size: 2.5rem;
+  animation: fadeIn 2s ease-in-out;
+}
+
+.verse {
+  font-size: 1.2rem;
+  margin-top: 10px;
+  color: #f9f9f9;
+}
+
+.btn-devocionales {
+  margin-top: 20px;
+  padding: 10px 25px;
+  background: #850574;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.btn-devocionales:hover {
+  background: #4d052f;
+}
+
+.cards-section {
+  display: flex;
+  justify-content: space-around;
+  margin: 40px 0;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: #130b10;
+  color: #d8d8e2;
+  padding: 20px;
+  border-radius: 20px;
+  width: 250px;
+  box-shadow: 0 0 10px #850574;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+.card:hover {
+  transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.mySwiper {
+  width: 100%;
+  height: 200px;
+  margin: 2rem auto;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}

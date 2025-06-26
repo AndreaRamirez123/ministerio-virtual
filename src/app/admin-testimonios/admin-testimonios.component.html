@@ -1,0 +1,19 @@
+<div class="admin-panel">
+  <h2>Panel de Administración de Testimonios</h2>
+
+  <div *ngIf="testimonios.length === 0">No hay testimonios para mostrar.</div>
+
+  <div class="admin-tarjetas">
+    <div class="admin-tarjeta" *ngFor="let t of testimonios">
+      <h3>{{ t.nombre_persona }}</h3>
+      <p><strong>Email:</strong> {{ t.email }}</p>
+      <p><strong>Testimonio:</strong> {{ t.testimonio }}</p>
+      <p><strong>Estado:</strong> {{ t.aprobado == 1 ? 'Aprobado' : 'Pendiente' }}</p>
+      <div class="acciones">
+        <button (click)="aprobarTestimonio(t.id)">✅ Aprobar</button>
+        <button (click)="eliminarTestimonio(t.id)">🗑️ Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
+

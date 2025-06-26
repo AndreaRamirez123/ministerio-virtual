@@ -1,0 +1,247 @@
+.testimonios-section {
+  background: url('/assets/fondo-testimonios.jpg') no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
+  padding: 3rem 1rem;
+  position: relative;
+  z-index: 0;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(207, 202, 202, 0.4); // oscurece un poco el fondo
+    z-index: 1;
+    pointer-events: none;
+
+  }
+   .titulo-seccion {
+    text-align: center;
+    font-size: 2rem;
+    color: #850574;
+    margin-bottom: 2rem;
+  }
+}
+
+
+// Contenedor centrado
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+// FORMULARIO transparente y alineado
+.formulario-con-fondo {
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(6px);
+  padding: 2rem;
+  border-radius: 20px;
+  max-width: 600px;
+  margin: 0 auto 3rem;
+  backdrop-filter: blur(10px);
+  width: 100%;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+
+  h3 {
+    text-align: center;
+    color: #850574;
+    font-size: 1.8rem;
+  }
+
+  .campo {
+    display: flex;
+    flex-direction: column;
+
+    input,
+    textarea {
+      padding: 0.9rem;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      width: 100%;
+      box-sizing: border-box;
+
+      &:focus {
+        outline: none;
+        border-color: #850574;
+        box-shadow: 0 0 6px #850574aa;
+      }
+    }
+
+    textarea {
+      resize: none;
+      min-height: 100px;
+    }
+  }
+
+
+
+  button {
+    padding: 0.9rem;
+    background-color: #850574;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: #4d052f;
+    }
+  }
+}
+
+
+.tarjetas-testimonios {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.tarjeta-testimonio {
+  width: 280px;
+  background: #ffffcc;
+  border-radius: 10px;
+  padding: 1rem 1.2rem;
+  box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.2);
+  transform: rotate(-1deg);
+  transition: transform 0.3s;
+  position: relative;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+
+  &:nth-child(even) {
+    background: #ccffcc;
+    transform: rotate(1.5deg);
+  }
+
+  &:hover {
+    transform: scale(1.03);
+  }
+
+  h3 {
+    margin-top: 0;
+    color: #333;
+  }
+
+  .fecha {
+    font-size: 0.8rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+  }
+
+  .contenido {
+    font-size: 0.95rem;
+    color: #000;
+  }
+}
+
+.tarjetas-testimonios {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  justify-items: center;
+  padding: 2rem 1rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.card {
+  width: 100%;
+  max-width: 280px;
+  min-height: 200px;
+  max-height: 280px;
+  padding: 1.2rem;
+  border-radius: 10px;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.2);
+  position: relative;
+  background-color: #fff9c4; // Puedes alternar luego
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+
+  h4 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #4d052f;
+  }
+
+  small {
+    font-size: 0.8rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    font-size: 0.95rem;
+    color: #000;
+    margin: 0;
+    overflow: auto;
+    max-height: 140px;
+    white-space: pre-line;
+    padding-right: 4px;
+  }
+
+  p::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  p::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 10px;
+  }
+}
+
+
+
+
+.pastel-1 { background-color: #ffe4e1; } // rosa claro
+.pastel-2 { background-color: #e0f7fa; } // celeste
+.pastel-3 { background-color: #e6ffe9; } // verde menta
+.pastel-4 { background-color: #fff9c4; } // amarillo suave
+.pastel-5 { background-color: #f3e5f5; } // lila suave
+.pastel-6 { background-color: #ffe0b2; } // durazno claro
+.pastel-7 { background-color: #f8bbd0; }
+.pastel-8 { background-color: #dcedc8; }
+
+
+.ver-mas-btn {
+  background: linear-gradient(135deg, #850574, #4d052f);
+  color: #fff;
+  border: none;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+
+  &:hover {
+    background: linear-gradient(135deg, #a1058e, #5e0642);
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+
+

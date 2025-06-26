@@ -1,0 +1,73 @@
+<!-- 🕊️ FORMULARIO con fondo espiritual -->
+<div class="formulario-con-fondo" [ngClass]="{ 'modo-edicion': editandoId }">
+  <form (ngSubmit)="guardarDevocional()" #devocionalForm="ngForm" class="formulario-devocional">
+    <h3>{{ editandoId ? '✍️ Editando Devocional' : '✍️ Agregar Devocional' }}</h3>
+
+    <div class="campo">
+      <input type="text" name="titulo" [(ngModel)]="nuevoDevocional.titulo" required placeholder=" " />
+      <label>Título</label>
+    </div>
+
+    <div class="campo">
+      <input type="text" name="cita_biblica" [(ngModel)]="nuevoDevocional.cita_biblica" placeholder=" " />
+      <label>Cita Bíblica</label>
+    </div>
+
+    <div class="campo">
+      <textarea name="reflexion" [(ngModel)]="nuevoDevocional.reflexion" required placeholder=" "></textarea>
+      <label>Reflexión</label>
+    </div>
+
+    <div class="campo">
+      <textarea name="oracion" [(ngModel)]="nuevoDevocional.oracion" placeholder=" "></textarea>
+      <label>Oración</label>
+    </div>
+
+    <div class="campo">
+      <input type="date" name="fecha_programada" [(ngModel)]="nuevoDevocional.fecha_programada" required placeholder=" " />
+      <label>Fecha para publicar</label>
+    </div>
+
+    <button type="submit">
+      {{ editandoId ? 'Actualizar Devocional' : 'Guardar Devocional' }}
+    </button>
+
+    <button *ngIf="editandoId" type="button" (click)="cancelarEdicion()" style="margin-left: 10px;">
+      ❌ Cancelar edición
+    </button>
+  </form>
+</div>
+
+<div *ngIf="devocionalDelDia" class="book-container">
+  <div class="book-page" [ngSwitch]="paginaActual">
+    <h2 *ngSwitchCase="0">{{ devocionalDelDia.titulo }}</h2>
+    <div *ngSwitchCase="1">
+      <p><strong>Cita Bíblica:</strong></p>
+      <p class="cita">{{ devocionalDelDia.cita_biblica }}</p>
+    </div>
+    <div *ngSwitchCase="2">
+      <p><strong>Reflexión:</strong></p>
+      <p class="reflexion">{{ devocionalDelDia.reflexion }}</p>
+    </div>
+    <div *ngSwitchCase="3">
+      <p><strong>Oración:</strong></p>
+      <p class="oracion">{{ devocionalDelDia.oracion }}</p>
+    </div>
+  </div>
+
+  <div class="navegacion">
+    <button (click)="paginaAnterior()" [disabled]="paginaActual === 0">Anterior</button>
+    <button (click)="paginaSiguiente()" [disabled]="paginaActual === 3">Siguiente</button>
+  </div>
+
+  <div class="like-section">
+    <button (click)="toggleLike(devocionalDelDia)">
+      {{ devocionalDelDia.likeado ? '💔 Quitar Like' : '❤️ Me Gusta' }}
+    </button>
+    <p>{{ devocionalDelDia.likes || 0 }} Me gusta</p>
+  </div>
+</div>
+
+<footer class="footer">
+  <p>© {{ anioActual }} Ministerio Virtual — Desarrollado con fe 💜</p>
+</footer>
