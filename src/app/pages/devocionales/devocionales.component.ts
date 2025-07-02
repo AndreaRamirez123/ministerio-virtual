@@ -24,6 +24,7 @@ export class DevocionalesComponent implements OnInit {
   constructor(private devService: DevocionalesService) {}
 
   ngOnInit() {
+
     this.obtenerDevocionales();
   }
 
@@ -34,7 +35,7 @@ export class DevocionalesComponent implements OnInit {
 
         const hoy = new Date().toISOString().split('T')[0];
         this.devocionalDelDia = this.devocionales.find((dev: any) => {
-          const fecha = dev.fecha_programada?.split('T')[0];
+          const fecha = dev.fecha_publicacion?.split('T')[0];
           return fecha === hoy;
         });
       },

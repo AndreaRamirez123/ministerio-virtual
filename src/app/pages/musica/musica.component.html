@@ -1,0 +1,87 @@
+<div class="musica-container">
+  <h2 class="titulo-musica"><i class="fas fa-record-vinyl"></i> Música para alabar a Dios</h2>
+
+  <!-- Filtros -->
+
+  <div class="filtros">
+    <button (click)="limpiarFiltro()" class="filtro-boton">🎶 Todas</button>
+    <button (click)="filtrarPorGenero('Aliento')" class="filtro-boton">💖 Aliento</button>
+    <button (click)="filtrarPorGenero('Adoración')" class="filtro-boton">🙏 Adoración</button>
+    <button (click)="filtrarPorGenero('Gozo')" class="filtro-boton">😊 Gozo</button>
+  </div>
+
+  <!-- Lista de canciones con CD -->
+
+  <div *ngIf="canciones.length === 0" class="text-center text-white mb-4">
+    No hay canciones disponibles aún.
+  </div>
+
+
+  <div class="disco-grid">
+    <div class="disco-card" *ngFor="let cancion of canciones | filter: filtroGenero">
+      <div class="disco-img">
+        <img src="assets/cd-pastel.png" alt="CD">
+      </div>
+      <div class="disco-info">
+        <h5>{{ cancion.titulo }}</h5>
+        <p>{{ cancion.artista }} - {{ cancion.genero }}</p>
+        <div class="reproductor">
+
+
+
+
+
+          <audio #audioRef [src]="cancion.url" preload="metadata"></audio>
+
+          <div class="controles">
+            <button (click)="retroceder(audioRef)">⏪</button>
+            <button (click)="togglePlay(audioRef)">
+              {{ audioRef.paused ? '▶️' : '⏸️' }}
+            </button>
+            <button (click)="avanzar(audioRef)">⏩</button>
+          </div>
+
+
+
+          <input type="range" min="0" [max]="audioRef.duration || 0" [value]="audioRef.currentTime"
+            (input)="cambiarTiempo($event, audioRef)">
+        </div>
+        <div class="acciones-musica">
+          <button (click)="toggleLike(cancion)">
+            <i class="fas" [ngClass]="{ 'fa-heart': cancion.liked, 'fa-heart-broken': !cancion.liked }"></i>
+            {{ cancion.liked ? 'Quitar Me gusta' : 'Me gusta' }}
+          </button>
+
+          <button (click)="compartirCancion(cancion)">
+            <i class="fas fa-share-alt"></i> Compartir
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Formulario para subir música -->
+  <form [formGroup]="formularioMusica" (ngSubmit)="enviarCancion()" enctype="multipart/form-data"
+    class="formulario-musica">
+    <h3><i class="fas fa-upload"></i> Subir nueva canción</h3>
+
+    <input type="text" formControlName="titulo" placeholder="Título" required>
+    <input type="text" formControlName="artista" placeholder="Artista" required>
+
+    <select formControlName="genero" required>
+      <option value="" disabled selected>Selecciona un género</option>
+      <option value="Aliento">Aliento</option>
+      <option value="Adoración">Adoración</option>
+      <option value="Gozo">Gozo</option>
+    </select>
+
+    <textarea formControlName="descripcion" placeholder="Descripción"></textarea>
+
+    <input type="file" (change)="onArchivoSeleccionado($event)" accept="audio/*" required>
+
+    <button type="submit" [disabled]="formularioMusica.invalid">Guardar Canción</button>
+  </form>
+
+
+</div>

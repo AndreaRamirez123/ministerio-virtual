@@ -1,4 +1,11 @@
+// models/db.js
 const mysql = require('mysql2/promise');
+const { Sequelize } = require('sequelize');
+
+const sequelize = new Sequelize('ministerio_virtual_db', 'root', '', {
+  host: 'localhost',
+  dialect: 'mysql',
+});
 
 const pool = mysql.createPool({
   host: 'localhost',
@@ -10,4 +17,8 @@ const pool = mysql.createPool({
   queueLimit: 0
 });
 
-module.exports = pool;
+// ✅ Solo exporta sequelize y pool
+module.exports = {
+  sequelize,
+  query: (...args) => pool.query(...args)
+};
