@@ -16,6 +16,9 @@ import { TestimoniosComponent } from './pages/testimonios/testimonios.component'
 import { AdminTestimoniosComponent } from './admin-testimonios/admin-testimonios.component';
 import { MusicaComponent } from './pages/musica/musica.component';
 import { FilterPipe } from './pipes/filter.pipe';
+import { VideosComponent } from './components/videos/videos.component';
+import { VideoService } from './services/video.service';
+import { SafeUrlPipe } from './pipes/safe-url.pipe';
 
 
 @NgModule({
@@ -28,7 +31,9 @@ import { FilterPipe } from './pipes/filter.pipe';
     TestimoniosComponent,
     AdminTestimoniosComponent,
     MusicaComponent,
-    FilterPipe
+    FilterPipe,
+    VideosComponent,
+    SafeUrlPipe
   ],
   imports: [
     BrowserModule,
@@ -41,7 +46,8 @@ import { FilterPipe } from './pipes/filter.pipe';
     FontAwesomeModule
 
   ],
-  providers: [],
+  providers: [VideoService],
   bootstrap: [AppComponent]
+
 })
 export class AppModule { }

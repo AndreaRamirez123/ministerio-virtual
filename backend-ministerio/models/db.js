@@ -1,12 +1,15 @@
 // models/db.js
-const mysql = require('mysql2/promise');
 const { Sequelize } = require('sequelize');
+const mysql = require('mysql2/promise');
 
+// ✅ Instancia de Sequelize (ajusta tu base de datos, usuario y contraseña)
 const sequelize = new Sequelize('ministerio_virtual_db', 'root', '', {
   host: 'localhost',
   dialect: 'mysql',
+  logging: false,
 });
 
+// ✅ Conexión opcional para consultas directas
 const pool = mysql.createPool({
   host: 'localhost',
   user: 'root',
@@ -14,11 +17,10 @@ const pool = mysql.createPool({
   database: 'ministerio_virtual_db',
   waitForConnections: true,
   connectionLimit: 10,
-  queueLimit: 0
+  queueLimit: 0,
 });
 
-// ✅ Solo exporta sequelize y pool
 module.exports = {
   sequelize,
-  query: (...args) => pool.query(...args)
+  query: (...args) => pool.query(...args),
 };

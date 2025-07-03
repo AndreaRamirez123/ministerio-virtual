@@ -5,16 +5,17 @@ import { DevocionalesComponent } from './pages/devocionales/devocionales.compone
 import { TestimoniosComponent } from './pages/testimonios/testimonios.component';
 import { AdminTestimoniosComponent } from './admin-testimonios/admin-testimonios.component';
 import { MusicaComponent } from './pages/musica/musica.component';
+import { VideosComponent } from './components/videos/videos.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
   { path: 'devocionales', component : DevocionalesComponent },
   { path: 'testimonios', component : TestimoniosComponent },
   { path: 'admin-testimonios', component : AdminTestimoniosComponent },
   { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
   { path: 'musica', component : MusicaComponent },
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
+  { path: 'videos', component: VideosComponent },
 ];
 
 @NgModule({

@@ -1,0 +1,44 @@
+<div class="fondo-videos">
+  <div class="encabezado-espiritual">
+    <h2 class="animado-titulo">🎥 Videos que Edifican 🙏</h2>
+    <p class="subtitulo">Comparte, adora y reflexiona con cada palabra audiovisual que toca el alma.</p>
+  </div>
+
+  <div class="filtros">
+    <button (click)="filtrar('palabra')">📖 Palabra</button>
+    <button (click)="filtrar('musica')">🎵 Música</button>
+    <button (click)="filtrar('podcast')">🎙️ Podcast</button>
+    <button (click)="filtrar('reflexion')">💭 Reflexión</button>
+    <button (click)="limpiarFiltro()">🌍 Todos</button>
+  </div>
+
+
+  <div class="formulario-agregar">
+    <h3>➕ Agregar Nuevo Video</h3>
+    <input type="text" placeholder="Título" [(ngModel)]="nuevoVideo.titulo" />
+    <input type="text" placeholder="Descripción" [(ngModel)]="nuevoVideo.descripcion" />
+    <select [(ngModel)]="nuevoVideo.tipo">
+      <option value="">Selecciona tipo</option>
+      <option value="palabra">Palabra</option>
+      <option value="musica">Música</option>
+      <option value="podcast">Podcast</option>
+      <option value="reflexion">Reflexión</option>
+    </select>
+    <input type="text" placeholder="URL de YouTube" [(ngModel)]="nuevoVideo.url" />
+    <button (click)="agregarVideo()">Guardar Video</button>
+  </div>
+
+
+  <div class="grid-videos">
+    <div class="card-video" *ngFor="let video of videosFiltrados">
+      <iframe [src]="video.url" frameborder="0" allowfullscreen></iframe>
+      <h3>{{ video.titulo }}</h3>
+      <p>{{ video.descripcion }}</p>
+      <span class="etiqueta">{{ video.tipo }}</span>
+    </div>
+  </div>
+
+
+</div>
+
+

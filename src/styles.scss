@@ -1,9 +1,13 @@
+/* styles.scss */
+
 html, body {
   height: 100%;
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #000; /* fallback */
 }
 
 app-root {
