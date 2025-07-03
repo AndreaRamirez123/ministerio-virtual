@@ -1,0 +1,66 @@
+<div class="donaciones-section">
+  <h2>🤝 Donaciones con Propósito</h2>
+  <p class="submensaje">
+    Todo lo que des con amor, transforma vidas. Gracias por ser parte. 💖
+  </p>
+
+  <!-- Tarjetas de categoría -->
+  <div class="categorias-donacion">
+    <div
+      class="categoria-card"
+      *ngFor="let opcion of opcionesDonacion"
+      (click)="seleccionarCategoria(opcion.titulo)"
+      [class.seleccionada]="categoriaSeleccionada === opcion.titulo"
+    >
+      <div class="icono">{{ opcion.icono }}</div>
+      <h4>{{ opcion.titulo }}</h4>
+    </div>
+  </div>
+
+  <div class="mensaje-mas">
+    <p>✨ También puedes contactarnos si tienes otro tipo de ayuda especial que quieras brindar.</p>
+  </div>
+
+  <button class="btn-contactar" (click)="scrollAlFormulario()">Quiero Donar</button>
+  <div *ngIf="mostrarToast" class="toast-mensaje">
+  ¡Gracias por tu disposición a donar! 💖
+</div>
+
+
+  <!-- Formulario -->
+  <div id="formulario-donacion" class="formulario-donacion" #formulario>
+    <h3>Formulario de Donación 🤲</h3>
+    <form (submit)="enviarDonacion()" #donacionForm="ngForm">
+      <input
+        type="text"
+        placeholder="Tu nombre"
+        [(ngModel)]="donacion.nombre"
+        name="nombre"
+        required
+      />
+      <input
+        type="email"
+        placeholder="Tu correo electrónico"
+        [(ngModel)]="donacion.email"
+        name="email"
+        required
+      />
+      <select [(ngModel)]="donacion.categoria" name="categoria" required>
+        <option value="">¿Qué deseas donar?</option>
+        <option *ngFor="let opcion of opcionesDonacion" [value]="opcion.titulo">
+          {{ opcion.titulo }}
+        </option>
+      </select>
+      <textarea
+        placeholder="Mensaje o detalles adicionales"
+        [(ngModel)]="donacion.mensaje"
+        name="mensaje"
+      ></textarea>
+      <button type="submit">Enviar Donación</button>
+    </form>
+  </div>
+  <div class="toast" *ngIf="mostrarToast">
+  ¡Estás a punto de transformar vidas! 🌟
+</div>
+
+</div>

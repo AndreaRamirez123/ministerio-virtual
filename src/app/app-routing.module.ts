@@ -6,6 +6,7 @@ import { TestimoniosComponent } from './pages/testimonios/testimonios.component'
 import { AdminTestimoniosComponent } from './admin-testimonios/admin-testimonios.component';
 import { MusicaComponent } from './pages/musica/musica.component';
 import { VideosComponent } from './components/videos/videos.component';
+import { DonacionesComponent } from './pages/donaciones/donaciones.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
   { path: 'musica', component : MusicaComponent },
   { path: 'videos', component: VideosComponent },
+  { path: 'donaciones', component: DonacionesComponent },
 ];
 
 @NgModule({

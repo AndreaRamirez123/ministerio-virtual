@@ -19,6 +19,7 @@ import { FilterPipe } from './pipes/filter.pipe';
 import { VideosComponent } from './components/videos/videos.component';
 import { VideoService } from './services/video.service';
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
+import { DonacionesComponent } from './pages/donaciones/donaciones.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { SafeUrlPipe } from './pipes/safe-url.pipe';
     MusicaComponent,
     FilterPipe,
     VideosComponent,
-    SafeUrlPipe
+    SafeUrlPipe,
+    DonacionesComponent
   ],
   imports: [
     BrowserModule,
