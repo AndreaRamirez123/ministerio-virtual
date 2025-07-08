@@ -10,7 +10,7 @@
     content: "";
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(207, 202, 202, 0.4); // oscurece un poco el fondo
+    background: rgba(207, 202, 202, 0.4);
     z-index: 1;
     pointer-events: none;
 
@@ -24,7 +24,6 @@
 }
 
 
-// Contenedor centrado
 .form-wrapper {
   display: flex;
   justify-content: center;
@@ -34,7 +33,6 @@
   margin-bottom: 2rem;
 }
 
-// FORMULARIO transparente y alineado
 .formulario-con-fondo {
   background-color: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(6px);
@@ -165,7 +163,7 @@
   font-family: 'Comic Sans MS', cursive, sans-serif;
   box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.2);
   position: relative;
-  background-color: #fff9c4; // Puedes alternar luego
+  background-color: #fff9c4; 
   overflow: hidden;
   display: flex;
   flex-direction: column;

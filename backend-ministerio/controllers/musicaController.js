@@ -50,7 +50,7 @@ const darMeGusta = async (req, res) => {
   }
 
   try {
-    // Aquí puedes registrar el me gusta en una tabla, por ejemplo
+
     console.log(`👍 Usuario ${usuario_id} dio me gusta a canción ${musica_id}`);
     res.status(200).json({ mensaje: 'Me gusta registrado' });
   } catch (error) {
@@ -66,7 +66,7 @@ const quitarMeGusta = async (req, res) => {
   }
 
   try {
-    // Aquí puedes quitar el registro del me gusta
+    
     console.log(`👎 Usuario ${usuario_id} quitó me gusta a canción ${musica_id}`);
     res.status(200).json({ mensaje: 'Me gusta eliminado' });
   } catch (error) {

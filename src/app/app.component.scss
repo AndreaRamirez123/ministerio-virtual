@@ -1,9 +1,6 @@
 
-
-
-/* ✅ HERO */
 .hero-section {
-  background: linear-gradient(to bottom right, #888a88, #c8d6db); /* gris suave con azul claro */
+  background: linear-gradient(to bottom right, #888a88, #c8d6db);
   background-size: cover;
   background-position: center;
   height: 70vh;
@@ -58,7 +55,6 @@
   border-radius: 12px;
 }
 
-/* ✅ CARDS */
 .cards-section {
   display: flex;
   justify-content: center;

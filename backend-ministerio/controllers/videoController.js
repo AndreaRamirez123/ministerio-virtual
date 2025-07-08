@@ -1,4 +1,4 @@
-// controllers/videoController.js
+
 const Video = require('../models/Video');
 
 exports.obtenerVideos = async (req, res) => {

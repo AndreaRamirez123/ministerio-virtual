@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
 
 router.get('/hoy', async (req, res) => {
   try {
-    const hoy = new Date().toLocaleDateString('en-CA'); // devuelve 'YYYY-MM-DD' en formato local
+    const hoy = new Date().toLocaleDateString('en-CA');
     const [rows] = await db.query('SELECT * FROM devocionales WHERE fecha_programada = ?', [hoy]);
     res.json(rows);
   } catch (error) {
@@ -29,7 +29,6 @@ router.get('/hoy', async (req, res) => {
   }
 });
 
-// Obtener todos los devocionales
 
 // POST - Agregar nuevo devocional
 router.post('/', async (req, res) => {
@@ -48,7 +47,7 @@ router.post('/', async (req, res) => {
 
 
 
-// PUT - Actualizar devocional por ID
+// PUT - Actualizar devocional
 router.put('/:id', async (req, res) => {
   const { id } = req.params;
   const { titulo, cita_biblica, reflexion, oracion, fecha_programada } = req.body;
@@ -68,7 +67,7 @@ router.put('/:id', async (req, res) => {
 
 
 
-// ✅ DELETE - Eliminar devocional por ID
+// ✅ DELETE - Eliminar devocional 
 router.delete('/:id', (req, res) => {
   const id = req.params.id;
   console.log('Intentando eliminar devocional con ID:', id);

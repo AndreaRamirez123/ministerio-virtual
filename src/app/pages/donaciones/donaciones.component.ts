@@ -1,4 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-donaciones',
@@ -10,7 +12,7 @@ export class DonacionesComponent implements OnInit {
 
   mostrarToast = false;
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   scrollAlFormulario() {
     const formulario = document.getElementById('formulario-donacion');
@@ -38,7 +40,9 @@ export class DonacionesComponent implements OnInit {
     nombre: '',
     email: '',
     categoria: '',
-    mensaje: ''
+    mensaje: '',
+    direccion: '',
+    medioPago: ''
   };
 
   seleccionarCategoria(categoria: string) {
@@ -47,15 +51,48 @@ export class DonacionesComponent implements OnInit {
     this.scrollAlFormulario();
   }
 
+  constructor(private http: HttpClient) { }
+
   enviarDonacion() {
-    console.log('Donación enviada:', this.donacion);
-    alert('¡Gracias por tu generosidad! 💖');
-    this.donacion = {
-      nombre: '',
-      email: '',
-      categoria: '',
-      mensaje: ''
-    };
-    this.categoriaSeleccionada = '';
+    const { nombre, email, categoria } = this.donacion;
+
+    if (!nombre || !email || !categoria) {
+      alert('Por favor, completa todos los campos requeridos 🙏');
+      return;
+    }
+
+    this.http.post('http://localhost:3000/api/donaciones', this.donacion).subscribe({
+      next: (respuesta) => {
+        alert('¡Gracias por tu generosidad! 💖');
+
+        this.donacion = {
+          nombre: '',
+          email: '',
+          categoria: '',
+          mensaje: '',
+          direccion: '',
+          medioPago: ''
+        };
+        this.categoriaSeleccionada = '';
+
+      },
+      error: (error) => {
+        console.error('Error al enviar la donación:', error);
+        alert('Ocurrió un error al registrar la donación. Inténtalo nuevamente 🙏');
+      }
+    })
+
+
+
   }
+
+  seleccionarMedioPago(metodo: string) {
+    this.donacion.medioPago = metodo;
+  }
+
+  coordinacionEntrega() {
+    this.donacion.direccion = 'Coordinar con el equipo';
+    alert('Te contactaremos para coordinar la direccion de entrega 🙌');
+  }
+
 }

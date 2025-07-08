@@ -97,7 +97,7 @@ export class VideosComponent implements OnInit {
     ? this.videos.filter(v => v.tipo === this.filtroTipo)
     : this.videos;
 
-  // Limpia el formulario
+
   this.nuevoVideo = {
     titulo: '',
     descripcion: '',
@@ -105,7 +105,7 @@ export class VideosComponent implements OnInit {
     url: ''
   };
 
-  // Muestra mensaje de éxito
+
   Swal.fire({
     icon: 'success',
     title: '¡Video agregado!',

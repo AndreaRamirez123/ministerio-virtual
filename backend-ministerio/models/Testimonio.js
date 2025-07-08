@@ -1,4 +1,4 @@
-const db = require('./db'); // usando mysql2/promise
+const db = require('./db');
 
 const Testimonio = {
   getAll: (callback) => {

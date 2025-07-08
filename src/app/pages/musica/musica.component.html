@@ -1,7 +1,6 @@
 <div class="musica-container">
   <h2 class="titulo-musica"><i class="fas fa-record-vinyl"></i> Música para alabar a Dios</h2>
 
-  <!-- Filtros -->
 
   <div class="filtros">
     <button (click)="limpiarFiltro()" class="filtro-boton">🎶 Todas</button>
@@ -10,7 +9,7 @@
     <button (click)="filtrarPorGenero('Gozo')" class="filtro-boton">😊 Gozo</button>
   </div>
 
-  <!-- Lista de canciones con CD -->
+
 
   <div *ngIf="canciones.length === 0" class="text-center text-white mb-4">
     No hay canciones disponibles aún.
@@ -61,7 +60,7 @@
   </div>
 
 
-  <!-- Formulario para subir música -->
+ 
   <form [formGroup]="formularioMusica" (ngSubmit)="enviarCancion()" enctype="multipart/form-data"
     class="formulario-musica">
     <h3><i class="fas fa-upload"></i> Subir nueva canción</h3>

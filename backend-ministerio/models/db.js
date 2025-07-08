@@ -2,7 +2,7 @@
 const { Sequelize } = require('sequelize');
 const mysql = require('mysql2/promise');
 
-// ✅ Instancia de Sequelize (ajusta tu base de datos, usuario y contraseña)
+
 const sequelize = new Sequelize('ministerio_virtual_db', 'root', '', {
   host: 'localhost',
   dialect: 'mysql',

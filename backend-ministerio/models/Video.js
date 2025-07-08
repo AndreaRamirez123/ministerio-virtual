@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize');
-const { sequelize } = require('./db'); 
+const { sequelize } = require('./db');
 
 const Video = sequelize.define('Video', {
   titulo: {
@@ -12,7 +12,7 @@ const Video = sequelize.define('Video', {
   },
   tipo: {
     type: DataTypes.STRING,
-    allowNull: false, // 'musica', 'palabra', 'podcast', etc.
+    allowNull: false, 
   },
   url: {
     type: DataTypes.STRING,

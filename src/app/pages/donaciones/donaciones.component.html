@@ -6,12 +6,8 @@
 
   <!-- Tarjetas de categoría -->
   <div class="categorias-donacion">
-    <div
-      class="categoria-card"
-      *ngFor="let opcion of opcionesDonacion"
-      (click)="seleccionarCategoria(opcion.titulo)"
-      [class.seleccionada]="categoriaSeleccionada === opcion.titulo"
-    >
+    <div class="categoria-card" *ngFor="let opcion of opcionesDonacion" (click)="seleccionarCategoria(opcion.titulo)"
+      [class.seleccionada]="categoriaSeleccionada === opcion.titulo">
       <div class="icono">{{ opcion.icono }}</div>
       <h4>{{ opcion.titulo }}</h4>
     </div>
@@ -23,44 +19,50 @@
 
   <button class="btn-contactar" (click)="scrollAlFormulario()">Quiero Donar</button>
   <div *ngIf="mostrarToast" class="toast-mensaje">
-  ¡Gracias por tu disposición a donar! 💖
-</div>
+    ¡Gracias por tu disposición a donar! 💖
+  </div>
 
 
   <!-- Formulario -->
   <div id="formulario-donacion" class="formulario-donacion" #formulario>
     <h3>Formulario de Donación 🤲</h3>
     <form (submit)="enviarDonacion()" #donacionForm="ngForm">
-      <input
-        type="text"
-        placeholder="Tu nombre"
-        [(ngModel)]="donacion.nombre"
-        name="nombre"
-        required
-      />
-      <input
-        type="email"
-        placeholder="Tu correo electrónico"
-        [(ngModel)]="donacion.email"
-        name="email"
-        required
-      />
+      <input type="text" placeholder="Tu nombre" [(ngModel)]="donacion.nombre" name="nombre" required />
+      <input type="email" placeholder="Tu correo electrónico" [(ngModel)]="donacion.email" name="email" required />
       <select [(ngModel)]="donacion.categoria" name="categoria" required>
         <option value="">¿Qué deseas donar?</option>
         <option *ngFor="let opcion of opcionesDonacion" [value]="opcion.titulo">
           {{ opcion.titulo }}
         </option>
       </select>
-      <textarea
-        placeholder="Mensaje o detalles adicionales"
-        [(ngModel)]="donacion.mensaje"
-        name="mensaje"
-      ></textarea>
+
+      <!-- Medio de pago  -->
+      <div *ngIf="donacion.categoria === 'Dinero'" class="metodos-pago">
+        <label>Selecciona un medio de pago:</label>
+        <div class="botones-pago">
+          <button type="button" (click)="seleccionarMedioPago('Nequi')">Nequi</button>
+          <button type="button" (click)="seleccionarMedioPago('Daviplata')">Daviplata</button>
+          <button type="button" (click)="seleccionarMedioPago('Bancolombia')">Bancolombia</button>
+        </div>
+        <p *ngIf="donacion.medioPago">Seleccionado: {{ donacion.medioPago }}</p>
+      </div>
+
+
+      <!--Otra categoria -->
+      <div *ngIf="donacion.categoria && donacion.categoria !== 'Dinero'" class="envio-info">
+        <label>¿Cómo deseas enviar tu donación?</label>
+        <button type="button" (click)="coordinacionEntrega()">Quiero coordinar la entrega 📦</button>
+        <p *ngIf="donacion.direccion">Se te contactará para indicar la dirección de entrega.</p>
+      </div>
+
+
+      <textarea placeholder="Mensaje o detalles adicionales" [(ngModel)]="donacion.mensaje" name="mensaje"></textarea>
+
       <button type="submit">Enviar Donación</button>
     </form>
   </div>
   <div class="toast" *ngIf="mostrarToast">
-  ¡Estás a punto de transformar vidas! 🌟
-</div>
+    ¡Estás a punto de transformar vidas! 🌟
+  </div>
 
 </div>

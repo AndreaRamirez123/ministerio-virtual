@@ -1,4 +1,4 @@
-/* styles.scss */
+
 
 html, body {
   height: 100%;
@@ -7,7 +7,8 @@ html, body {
   display: flex;
   flex-direction: column;
   font-family: 'Segoe UI', sans-serif;
-  background-color: #000; /* fallback */
+  background-color: white;
+  padding-top: 120px;
 }
 
 app-root {

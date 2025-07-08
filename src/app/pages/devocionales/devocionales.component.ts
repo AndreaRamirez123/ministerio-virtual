@@ -99,7 +99,7 @@ export class DevocionalesComponent implements OnInit {
     devocional.likes = devocional.likes || 0;
     devocional.likes += devocional.likeado ? 1 : -1;
 
-    // Aquí podrías llamar al servicio para guardar los likes
+
   }
 
   paginaAnterior() {
@@ -107,7 +107,7 @@ export class DevocionalesComponent implements OnInit {
   }
 
   paginaSiguiente() {
-    if (this.paginaActual < 3) this.paginaActual++; // 4 páginas: 0,1,2,3
+    if (this.paginaActual < 3) this.paginaActual++; 
   }
 
   private resetForm() {

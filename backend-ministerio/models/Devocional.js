@@ -1,5 +1,5 @@
-// models/Devocional.js
-const db = require('./db'); // este es el pool de mysql2
+
+const db = require('./db'); 
 
 const Devocional = {
   getAll: (callback) => {

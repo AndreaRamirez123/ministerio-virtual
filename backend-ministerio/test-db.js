@@ -6,5 +6,5 @@ db.query('SELECT 1 + 1 AS resultado', (err, results) => {
   } else {
     console.log('✅ Conexión exitosa a la base de datos. Resultado:', results[0].resultado);
   }
-  process.exit(); // Para cerrar el proceso
+  process.exit(); 
 });

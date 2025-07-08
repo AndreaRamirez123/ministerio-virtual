@@ -249,3 +249,20 @@ h2 {
   height: auto !important;
   visibility: visible !important;
 }
+
+.metodos-pago .botones-pago button,
+.envio-info button {
+  background-color: #850574;
+  color: #fff;
+  border: none;
+  margin: 5px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.metodos-pago .botones-pago button:hover,
+.envio-info button:hover {
+  background-color: #4d052f;
+}

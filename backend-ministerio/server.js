@@ -6,7 +6,9 @@ const Video = require('./models/Video');
 const devocionalesRoutes = require('./routes/devocionalRoutes');
 const testimoniosRoutes = require('./routes/testimonioRoutes');
 const musicaRoutes = require('./routes/musicaRoutes');
-const videoRoutes = require('./routes/videoRoutes'); // ✅ Este archivo debe existir
+const videoRoutes = require('./routes/videoRoutes');
+const donacionesRoutes = require('./routes/donacionesRoutes')
+
 
 const app = express();
 
@@ -16,7 +18,8 @@ app.use(express.json());
 app.use('/api/devocionales', devocionalesRoutes);
 app.use('/api/testimonios', testimoniosRoutes);
 app.use('/api/musica', musicaRoutes);
-app.use('/api/videos', videoRoutes); // ✅ Ya lo definiste arriba correctamente
+app.use('/api/videos', videoRoutes);
+app.use('/api/donaciones', donacionesRoutes)
 
 app.use('/uploads', express.static('uploads'));
 

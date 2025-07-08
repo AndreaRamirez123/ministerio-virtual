@@ -8,7 +8,7 @@ if (!fs.existsSync(musicFolder)) {
   fs.mkdirSync(musicFolder, { recursive: true });
 }
 
-// Configuración de Multer
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, musicFolder);

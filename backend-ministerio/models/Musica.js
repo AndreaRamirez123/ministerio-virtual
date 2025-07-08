@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize');
-const { sequelize } = require('./db'); // ✅ correcto
+const { sequelize } = require('./db'); 
 
 const Musica = sequelize.define('Musica', {
   titulo: { type: DataTypes.STRING, allowNull: false },
