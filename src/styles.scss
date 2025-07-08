@@ -8,7 +8,7 @@ html, body {
   flex-direction: column;
   font-family: 'Segoe UI', sans-serif;
   background-color: white;
-  padding-top: 120px;
+  padding-top: 100px;
 }
 
 app-root {
@@ -17,3 +17,32 @@ app-root {
   flex-direction: column;
   min-height: 100vh;
 }
+
+.footer {
+  width: 100%;
+  background: linear-gradient(to right, #130b10, #4d052f);
+  color: #d8d8e2;
+  padding: 2rem 1rem;
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+  margin-top: 4rem;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.3);
+  border-top: 1px solid #850574;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer p {
+  margin: 0.3rem 0;
+  line-height: 1.5;
+}
+
+.verse-footer {
+  font-style: italic;
+  font-size: 0.95rem;
+  color: #e6b3cc;
+}
+

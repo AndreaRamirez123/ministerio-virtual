@@ -4,18 +4,51 @@
   [navigation]="true"
   [pagination]="{ clickable: true }"
   [loop]="true"
-  [autoplay]="{ delay: 4000, disableOnInteraction: false }"
+  [autoplay]="{ delay: 5000, disableOnInteraction: false }"
 >
+  <!-- SLIDE 1 -->
   <ng-template swiperSlide>
-    <img src="assets/slider/imagen1.jpg" alt="Imagen 1" />
+    <div class="slide-overlay">
+      <img src="assets/slider/imagen5.jpg" alt="Esperanza" />
+      <div class="slide-texto">
+        <h2 class="slide-titulo">Confía en los planes de Dios</h2>
+        <p class="slide-versiculo">
+          "Porque yo sé los planes que tengo para ustedes..."<br />
+          — Jeremías 29:11
+        </p>
+      </div>
+    </div>
   </ng-template>
+
+  <!-- SLIDE 2 -->
   <ng-template swiperSlide>
-    <img src="assets/slider/imagen2.jpg" alt="Imagen 2" />
+    <div class="slide-overlay">
+      <img src="assets/slider/imagen2.jpg" alt="Fe en la tormenta" />
+      <div class="slide-texto">
+        <h2 class="slide-titulo">Dios está contigo en cada batalla</h2>
+        <p class="slide-versiculo">
+          "Aunque pase por el valle más oscuro, no temeré..."<br />
+          — Salmo 23:4
+        </p>
+      </div>
+    </div>
   </ng-template>
+
+  <!-- SLIDE 3 -->
   <ng-template swiperSlide>
-    <img src="assets/slider/imagen3.jpg" alt="Imagen 3" />
+    <div class="slide-overlay">
+      <img src="assets/slider/imagen3.jpg" alt="Amor que transforma" />
+      <div class="slide-texto">
+        <h2 class="slide-titulo">Su amor renueva tu vida</h2>
+        <p class="slide-versiculo">
+          "El que está en Cristo es una nueva criatura..."<br />
+          — 2 Corintios 5:17
+        </p>
+      </div>
+    </div>
   </ng-template>
 </swiper>
+
 
 
 
