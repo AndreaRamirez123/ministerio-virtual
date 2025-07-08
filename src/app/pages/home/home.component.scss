@@ -74,16 +74,57 @@
 
 .slider-title-section {
   text-align: center;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
+  margin: 2rem 0 1.5rem;
 
   .section-title {
-    font-size: 2rem;
+    font-size: 2.5rem;
+    font-weight: 700;
     color: #850574;
-    font-weight: bold;
-    text-shadow: 1px 1px 2px #ccc;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+    background: linear-gradient(to right, #f8f0fa, #ffffff);
+    border-radius: 20px;
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 12px rgba(133, 5, 116, 0.1);
+
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(to right, #850574, #d48dc4);
+      border-radius: 50px;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    &:hover::after {
+      transform: scaleX(1);
+    }
   }
 }
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeInUp 1s ease-out both;
+}
+
+
 
 
 .mision-vision-section {
@@ -205,4 +246,12 @@
 }
 .card:hover {
   transform: scale(1.05);
+}
+
+.daily-message {
+  font-size: 1.1rem;
+  color: #4d052f;
+  font-style: italic;
+  margin-top: 0.5rem;
+  animation: fadeIn 1.5s ease;
 }
