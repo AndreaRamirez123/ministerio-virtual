@@ -2,18 +2,23 @@ const express = require('express');
 const router = express.Router();
 const db = require('../models/db');
 
+router.get('/todos', async (req, res) => {
+  try {
+    const [rows] = await db.query('SELECT * FROM devocionales');
+    res.json(rows);
+  } catch (e) {
+    console.error('Error al obtener todos los devocionales:', e);
+    res.status(500).json({ mensaje: 'Error' });
+  }
+});
 
 router.get('/', async (req, res) => {
   try {
-    const hoy = new Date().toISOString().slice(0, 10);
-    const [rows] = await db.query(
-      'SELECT * FROM devocionales WHERE fecha_programada = ?',
-      [hoy]
-    );
+    const [rows] = await db.query('SELECT * FROM devocionales ORDER BY fecha_programada DESC');
     res.json(rows);
   } catch (e) {
-    console.error('❌ Error al obtener devocionales del día:', e);
-    res.status(500).json({ mensaje: 'Error al obtener devocional del día' });
+    console.error('❌ Error al obtener devocionales:', e);
+    res.status(500).json({ mensaje: 'Error al obtener devocionales' });
   }
 });
 
@@ -30,7 +35,7 @@ router.get('/hoy', async (req, res) => {
 });
 
 
-// POST - Agregar nuevo devocional
+// POST - Agregar devocional
 router.post('/', async (req, res) => {
   try {
     const { titulo, cita_biblica, reflexion, oracion, fecha_programada } = req.body;
@@ -67,7 +72,7 @@ router.put('/:id', async (req, res) => {
 
 
 
-// ✅ DELETE - Eliminar devocional 
+// ✅ DELETE - Eliminar devocional
 router.delete('/:id', (req, res) => {
   const id = req.params.id;
   console.log('Intentando eliminar devocional con ID:', id);

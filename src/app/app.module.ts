@@ -6,6 +6,7 @@ import { SwiperModule } from 'swiper/angular';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -20,6 +21,8 @@ import { VideosComponent } from './components/videos/videos.component';
 import { VideoService } from './services/video.service';
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
 import { DonacionesComponent } from './pages/donaciones/donaciones.component';
+import { AdminMusicaclsComponent } from './videos/musica/admin-musicacls/admin-musicacls.component';
+import { AdminModule } from './admin/admin.module';
 
 
 @NgModule({
@@ -35,17 +38,21 @@ import { DonacionesComponent } from './pages/donaciones/donaciones.component';
     FilterPipe,
     VideosComponent,
     SafeUrlPipe,
-    DonacionesComponent
+    DonacionesComponent,
+    AdminMusicaclsComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AdminModule,
     SwiperModule,
     HttpClientModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FormsModule
 
   ],
   providers: [VideoService],

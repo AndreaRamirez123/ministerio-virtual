@@ -1,0 +1,20 @@
+  <form [formGroup]="formularioMusica" (ngSubmit)="enviarCancion()" enctype="multipart/form-data"
+    class="formulario-musica">
+    <h3><i class="fas fa-upload"></i> Subir nueva canción</h3>
+
+    <input type="text" formControlName="titulo" placeholder="Título" required>
+    <input type="text" formControlName="artista" placeholder="Artista" required>
+
+    <select formControlName="genero" required>
+      <option value="" disabled selected>Selecciona un género</option>
+      <option value="Aliento">Aliento</option>
+      <option value="Adoración">Adoración</option>
+      <option value="Gozo">Gozo</option>
+    </select>
+
+    <textarea formControlName="descripcion" placeholder="Descripción"></textarea>
+
+    <input type="file" (change)="onArchivoSeleccionado($event)" accept="audio/*" required>
+
+    <button type="submit" [disabled]="formularioMusica.invalid">Guardar Canción</button>
+  </form>

@@ -13,20 +13,7 @@
   </div>
 
 
-  <div class="formulario-agregar">
-    <h3>➕ Agregar Nuevo Video</h3>
-    <input type="text" placeholder="Título" [(ngModel)]="nuevoVideo.titulo" />
-    <input type="text" placeholder="Descripción" [(ngModel)]="nuevoVideo.descripcion" />
-    <select [(ngModel)]="nuevoVideo.tipo">
-      <option value="">Selecciona tipo</option>
-      <option value="palabra">Palabra</option>
-      <option value="musica">Música</option>
-      <option value="podcast">Podcast</option>
-      <option value="reflexion">Reflexión</option>
-    </select>
-    <input type="text" placeholder="URL de YouTube" [(ngModel)]="nuevoVideo.url" />
-    <button (click)="agregarVideo()">Guardar Video</button>
-  </div>
+  
 
 
   <div class="grid-videos">

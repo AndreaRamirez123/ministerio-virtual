@@ -15,12 +15,7 @@ export class VideosComponent implements OnInit {
   videos: any[] = [];
   videosFiltrados: any[] = [];
 
-  nuevoVideo = {
-    titulo: '',
-    descripcion: '',
-    tipo: '',
-    url: ''
-  };
+
 
   constructor(
     private sanitizer: DomSanitizer,
@@ -70,48 +65,5 @@ export class VideosComponent implements OnInit {
       ? this.videos.filter(video => video.tipo === tipo)
       : this.videos;
   }
-
-  agregarVideo(): void {
-  if (
-    !this.nuevoVideo.titulo ||
-    !this.nuevoVideo.descripcion ||
-    !this.nuevoVideo.tipo ||
-    !this.nuevoVideo.url
-  ) {
-    Swal.fire({
-      icon: 'warning',
-      title: 'Campos incompletos',
-      text: 'Por favor, completa todos los campos.',
-      confirmButtonColor: '#3085d6',
-    });
-    return;
-  }
-
-  const videoAGuardar = {
-    ...this.nuevoVideo,
-    url: this.transformarAEmbed(this.nuevoVideo.url)
-  };
-
-  this.videos.push(videoAGuardar);
-  this.videosFiltrados = this.filtroTipo
-    ? this.videos.filter(v => v.tipo === this.filtroTipo)
-    : this.videos;
-
-
-  this.nuevoVideo = {
-    titulo: '',
-    descripcion: '',
-    tipo: '',
-    url: ''
-  };
-
-
-  Swal.fire({
-    icon: 'success',
-    title: '¡Video agregado!',
-    text: 'El nuevo video se ha guardado correctamente.',
-    timer: 2000,
-    showConfirmButton: false
-  });
 }
-}
+

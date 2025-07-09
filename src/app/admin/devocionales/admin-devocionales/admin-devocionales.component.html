@@ -1,0 +1,85 @@
+
+<div class="formulario-con-fondo" [ngClass]="{ 'modo-edicion': editandoId }">
+  <form (ngSubmit)="guardarDevocional()" #devocionalForm="ngForm" class="formulario-devocional">
+    <h3>{{ editandoId ? '✍️ Editando Devocional' : '✍️ Agregar Devocional' }}</h3>
+
+    <div class="campo">
+      <input
+        type="text"
+        name="titulo"
+        [(ngModel)]="nuevoDevocional.titulo"
+        required
+        placeholder=" "
+      />
+      <label>Título</label>
+    </div>
+
+    <div class="campo">
+      <input
+        type="text"
+        name="cita_biblica"
+        [(ngModel)]="nuevoDevocional.cita_biblica"
+        placeholder=" "
+      />
+      <label>Cita Bíblica</label>
+    </div>
+
+    <div class="campo">
+      <textarea
+        name="reflexion"
+        [(ngModel)]="nuevoDevocional.reflexion"
+        required
+        placeholder=" "
+      ></textarea>
+      <label>Reflexión</label>
+    </div>
+
+    <div class="campo">
+      <textarea
+        name="oracion"
+        [(ngModel)]="nuevoDevocional.oracion"
+        placeholder=" "
+      ></textarea>
+      <label>Oración</label>
+    </div>
+
+    <div class="campo">
+      <input
+        type="date"
+        name="fecha_programada"
+        [(ngModel)]="nuevoDevocional.fecha_programada"
+        required
+        placeholder=" "
+      />
+      <label>Fecha para publicar</label>
+    </div>
+
+    <div class="botones-formulario">
+      <button type="submit">
+        {{ editandoId ? 'Actualizar Devocional' : 'Guardar Devocional' }}
+      </button>
+
+      <button
+        *ngIf="editandoId"
+        type="button"
+        (click)="cancelarEdicion()"
+        style="margin-left: 10px;"
+      >
+        ❌ Cancelar edición
+      </button>
+    </div>
+  </form>
+</div>
+
+<!-- LISTADO DE DEVOCIONALES -->
+<div class="listado-devocionales" *ngIf="devocionales.length > 0">
+  <h4>📜 Lista de Devocionales</h4>
+  <ul>
+    <li *ngFor="let d of devocionales">
+      <strong>{{ d.titulo }}</strong> - {{ d.fecha_programada | date:'longDate' }}
+      <button (click)="editarDevocional(d)">✏️</button>
+      <button (click)="eliminarDevocional(d.id)">🗑️</button>
+    </li>
+  </ul>
+</div>
+

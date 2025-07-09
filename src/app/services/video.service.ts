@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,11 +10,11 @@ export class VideoService {
 
   constructor(private http: HttpClient) {}
 
-  obtenerVideos() {
+  obtenerVideos(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl);
   }
 
-  crearVideo(video: any) {
+  agregarVideo(video: any): Observable<any> {
     return this.http.post(this.apiUrl, video);
   }
 }

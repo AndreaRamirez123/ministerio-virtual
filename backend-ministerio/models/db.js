@@ -1,4 +1,4 @@
-// models/db.js
+
 const { Sequelize } = require('sequelize');
 const mysql = require('mysql2/promise');
 
@@ -9,7 +9,7 @@ const sequelize = new Sequelize('ministerio_virtual_db', 'root', '', {
   logging: false,
 });
 
-// ✅ Conexión opcional para consultas directas
+
 const pool = mysql.createPool({
   host: 'localhost',
   user: 'root',

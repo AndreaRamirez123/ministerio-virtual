@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import Swal from 'sweetalert2';
 import { DevocionalesService } from 'src/app/services/devocionales.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-devocionales',
@@ -8,98 +8,57 @@ import { DevocionalesService } from 'src/app/services/devocionales.service';
   styleUrls: ['./devocionales.component.scss']
 })
 export class DevocionalesComponent implements OnInit {
-  nuevoDevocional = {
-    titulo: '',
-    cita_biblica: '',
-    reflexion: '',
-    oracion: '',
-    fecha_programada: ''
-  };
-
   devocionales: any[] = [];
   devocionalDelDia: any;
-  editandoId: number | null = null;
   paginaActual = 0;
 
-  constructor(private devService: DevocionalesService) {}
+  constructor(private devService: DevocionalesService) { }
 
   ngOnInit() {
-
     this.obtenerDevocionales();
   }
 
-  obtenerDevocionales() {
-    this.devService.obtenerDevocionales().subscribe({
-      next: (data) => {
-        this.devocionales = data;
+obtenerDevocionales() {
+  this.devService.obtenerDevocionales().subscribe({
+    next: (data) => {
+      this.devocionales = data;
 
-        const hoy = new Date().toISOString().split('T')[0];
-        this.devocionalDelDia = this.devocionales.find((dev: any) => {
-          const fecha = dev.fecha_publicacion?.split('T')[0];
-          return fecha === hoy;
-        });
-      },
-      error: () => {
-        Swal.fire('❌ Error', 'No se pudieron cargar los devocionales', 'error');
+      const hoy = new Date().toLocaleDateString('en-CA');
+      console.log('🟢 Hoy es:', hoy);
+      console.log('📦 Todos los devocionales recibidos:', this.devocionales);
+
+      // Mostrar fechas para comparar
+      this.devocionales.forEach((dev, i) => {
+        const fecha = dev.fecha_programada?.split('T')[0];
+        console.log(`🔎 Devocional #${i + 1} → fecha_programada: ${dev.fecha_programada} | recortada: ${fecha}`);
+      });
+
+      const devocionalesHoy = this.devocionales.filter((dev: any) => {
+        const fecha = dev.fecha_programada?.split('T')[0];
+        return fecha === hoy;
+      });
+
+      console.log('📅 Devocionales con fecha de hoy:', devocionalesHoy);
+      this.devocionalDelDia = devocionalesHoy[0];
+
+      if (!this.devocionalDelDia) {
+        console.warn('⚠️ No hay devocional del día para hoy');
+      } else {
+        console.log('✅ Devocional del día:', this.devocionalDelDia);
       }
-    });
-  }
+    },
+    error: () => {
+      Swal.fire('❌ Error', 'No se pudieron cargar los devocionales', 'error');
+    }
+  });
+}
 
-  guardarDevocional() {
-    const dev = {
-      ...this.nuevoDevocional,
-      fecha_programada: this.nuevoDevocional.fecha_programada || new Date().toISOString().slice(0, 10)
-    };
 
-    const obs = this.editandoId
-      ? this.devService.actualizarDevocional(this.editandoId, dev)
-      : this.devService.agregarDevocional(dev);
-
-    obs.subscribe({
-      next: () => {
-        Swal.fire(
-          this.editandoId ? '✅ Actualizado' : '¡Agregado!',
-          `Devocional ${this.editandoId ? 'actualizado' : 'guardado'} exitosamente`,
-          'success'
-        );
-        this.resetForm();
-        this.obtenerDevocionales();
-      },
-      error: () => Swal.fire('❌ Error', 'Ocurrió un error', 'error')
-    });
-  }
-
-  editarDevocional(d: any) {
-    this.nuevoDevocional = { ...d };
-    this.editandoId = d.id;
-  }
-
-  cancelarEdicion() {
-    this.resetForm();
-  }
-
-  eliminarDevocional(id: number) {
-    Swal.fire({
-      title: '¿Eliminar?',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Sí, eliminar'
-    }).then(res => {
-      if (res.isConfirmed) {
-        this.devService.eliminarDevocional(id).subscribe(() => {
-          Swal.fire('Eliminado', '', 'success');
-          this.obtenerDevocionales();
-        });
-      }
-    });
-  }
 
   toggleLike(devocional: any) {
     devocional.likeado = !devocional.likeado;
     devocional.likes = devocional.likes || 0;
     devocional.likes += devocional.likeado ? 1 : -1;
-
-
   }
 
   paginaAnterior() {
@@ -107,27 +66,7 @@ export class DevocionalesComponent implements OnInit {
   }
 
   paginaSiguiente() {
-    if (this.paginaActual < 3) this.paginaActual++; 
+    if (this.paginaActual < 3) this.paginaActual++;
   }
-
-  private resetForm() {
-    this.editandoId = null;
-    this.paginaActual = 0;
-    this.nuevoDevocional = {
-      titulo: '',
-      cita_biblica: '',
-      reflexion: '',
-      oracion: '',
-      fecha_programada: ''
-    };
-  }
-  anioActual: number = new Date().getFullYear();
-
 }
-
-
-
-
-
-
 
